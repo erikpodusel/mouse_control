@@ -13,30 +13,10 @@ class MyApp(QMainWindow, Ui_MainWindow):
         self.f_keys = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
         self.f_triggers = [Key.f1, Key.f2, Key.f3, Key.f4, Key.f5, Key.f6, Key.f7, Key.f8, Key.f9, Key.f10, Key.f11, Key.f12]
 
-    def checkInput(self, valueToCheck, typeOfValue):
-        errorFound = 0
-        
-        if typeOfValue == 'key':
-            lenOfValue = len(valueToCheck)
-            keyFound = 0
-            
-            if lenOfValue >= 2:
-                for i in range(0, 12):
-                    if valueToCheck == self.f_keys[i]:
-                        self.startKey = self.f_triggers[i]
-                        keyFound = 1
-                        break
-                if keyFound == 0:
-                    errorFound = 1
-                    
-        else:
-            if valueToCheck.isdecimal() == False:
-                errorFound = 1
-                
-        if errorFound == 1:
+    def checkDelay(self, valueToCheck):
+        if valueToCheck.isdecimal() == False:
             return True
-        else:
-            return False
+        return False
 
     def clickingButton(self):
         if self.radio_LeftClick.isChecked():
@@ -99,11 +79,11 @@ class MyApp(QMainWindow, Ui_MainWindow):
         middle = self.middleClick()
         delay = self.clickDelay()
         startKey = self.startStopKey()
-        exitKey = seelf.exitKey()
+        exitKey = self.exitKey()
         scroll = self.scrollChoose()
         errorMessage = 'Invalid input!'
         
-        if self.checkInput(delay, 'delay'):
+        if self.checkDelay(delay):
             self.lineEdit_ClickDelay.setText(errorMessage)
         else:
             delay = int(delay) / 1000
