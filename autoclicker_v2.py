@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog, QDialog
 from PyQt5 import QtGui, uic, QtWidgets
 from pynput.mouse import Button, Controller
 from pynput.keyboard import KeyCode, Key, Listener
-#from pynput import keyboard
 
 qtCreatorFile = 'clicker.ui'
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
